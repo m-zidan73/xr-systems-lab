@@ -1,0 +1,36 @@
+# Unity
+unity/[Ll]ibrary/
+unity/[Tt]emp/
+unity/[Oo]bj/
+unity/[Bb]uild/
+unity/[Bb]uilds/
+unity/[Ll]ogs/
+unity/[Uu]ser[Ss]ettings/
+unity/[Mm]emoryCaptures/
+unity/[Rr]ecordings/
+unity/.vs/
+unity/.vscode/
+unity/.idea/
+unity/.vsconfig
+unity/*.csproj
+unity/*.sln
+unity/*.slnx
+unity/*.user
+unity/*.pidb
+unity/*.pdb
+unity/*.mdb
+# Videos never go in the repo
+*.mp4
+*.mov
+*.webm
+*.avi
+# Blender backups
+*.blend1
+*.blend2
+# Generated, Node, OS, local Claude settings
+site/dist/
+node_modules/
+test-results*.xml
+Thumbs.db
+Desktop.ini
+.claude/settings.local.json
