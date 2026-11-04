@@ -7,8 +7,8 @@ namespace Lab.W01.VariableScrew
     /// separate ribbon child wrapped into a real helix by ScrewHelix.shader.
     ///
     /// The difference from <see cref="Screw"/> is the silhouette: this one actually has
-    /// thread on its outline, which is what you see when a screw is held close in a
-    /// headset. It costs about 3,200 vertices per screw, fixed whatever the length.
+    /// thread on its outline, which matters when a screw is seen up close, as it would be
+    /// in VR. It costs about 3,200 vertices per screw, fixed whatever the length.
     /// </summary>
     [ExecuteAlways]
     public class HelixScrew : MonoBehaviour

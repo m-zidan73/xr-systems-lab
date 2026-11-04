@@ -1,8 +1,8 @@
 // Real geometry thread for URP.
 //
 // A straight ribbon wrapped into a helix in the vertex stage. Unlike the normal-mapped
-// version this changes the silhouette, which is what you notice when a screw is held
-// close in a headset. It costs about 3,200 vertices per screw, fixed regardless of
+// version this changes the silhouette, which matters when a screw is seen up close, as it
+// would be in VR. It costs about 3,200 vertices per screw, fixed regardless of
 // length, and it keeps the one-mesh-for-every-length property because the helix is
 // re-evaluated rather than stretched.
 //
