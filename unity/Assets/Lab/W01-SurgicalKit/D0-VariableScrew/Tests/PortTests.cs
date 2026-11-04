@@ -14,7 +14,7 @@ namespace Lab.W01.VariableScrew.Tests
     public class PortTests
     {
         const int ScrewsInEachScene = 10;
-        const float DemoStartDistance = 0.12f;
+        const float DemoStartDistance = 0.145f;
 
         static T[] InScene<T>(Scene scene) where T : Component =>
             scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<T>(true)).ToArray();
@@ -78,6 +78,60 @@ namespace Lab.W01.VariableScrew.Tests
                 Assert.AreEqual(ScrewsInEachScene, screws.Length);
                 foreach (var screw in screws) Assert.IsNotNull(screw.Spec, screw.name);
                 AssertOrbitCamera(scene);
+            }
+            finally
+            {
+                EditorSceneManager.CloseScene(scene, true);
+            }
+        }
+
+        /// <summary>Average brightness of everything the camera sees except its background.</summary>
+        static float MeanSurfaceBrightness(Camera camera)
+        {
+            const int Width = 320;
+            const int Height = 200;
+            const float BackgroundTolerance = 0.04f;
+
+            var target = RenderTexture.GetTemporary(Width, Height, 24, RenderTextureFormat.ARGB32);
+            var image = new Texture2D(Width, Height, TextureFormat.RGB24, false);
+            try
+            {
+                camera.targetTexture = target;
+                camera.Render();
+                RenderTexture.active = target;
+                image.ReadPixels(new Rect(0, 0, Width, Height), 0, 0);
+                image.Apply();
+
+                var background = camera.backgroundColor;
+                var surface = image.GetPixels().Where(pixel =>
+                    Mathf.Abs(pixel.r - background.r) + Mathf.Abs(pixel.g - background.g) + Mathf.Abs(pixel.b - background.b)
+                    > BackgroundTolerance).ToArray();
+                Assert.IsNotEmpty(surface, "Nothing but background in view");
+                return surface.Average(pixel => pixel.grayscale);
+            }
+            finally
+            {
+                camera.targetTexture = null;
+                RenderTexture.active = null;
+                RenderTexture.ReleaseTemporary(target);
+                Object.DestroyImmediate(image);
+            }
+        }
+
+        // Custom URP shaders need the cluster keyword under Forward+, or direct light silently
+        // drops to zero and only the ambient remains.
+        [TestCase(ScrewPaths.ScenePath)]
+        [TestCase(ScrewPaths.HelixScenePath)]
+        public void Screws_AreLitByTheSceneLights(string scenePath)
+        {
+            var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
+            try
+            {
+                var camera = InScene<Camera>(scene).Single(c => c.name == "Main Camera");
+                var lit = MeanSurfaceBrightness(camera);
+                foreach (var light in InScene<Light>(scene)) light.enabled = false;
+                var unlit = MeanSurfaceBrightness(camera);
+                Assert.Greater(lit, unlit * 1.2f, $"lit {lit}, unlit {unlit}");
             }
             finally
             {

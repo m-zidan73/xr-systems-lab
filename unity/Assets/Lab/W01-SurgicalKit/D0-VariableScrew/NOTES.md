@@ -16,6 +16,10 @@ prefer that shape.
   `Screw.cs` resizes the capsule and moves `TipPoint` by hand. Without them, physics and
   any depth check still use the base mesh length. This is the most common bug with this
   technique.
+- **Forward+ needs a keyword.** A custom URP shader must declare
+  `#pragma multi_compile _ _CLUSTER_LIGHT_LOOP`. Without it, direct light silently drops to
+  zero under the Forward+ path and only the ambient remains. `PortTests` checks this by
+  rendering each scene with the lights on and off.
 - **Scale.** A 20 mm screw is 0.02 Unity units. Fine here, a problem once hand tracking
   and physics arrive. Decide the scene scale before modelling anything else.
 - **`MaterialPropertyBlock` breaks the SRP Batcher** in URP. Irrelevant at a dozen
