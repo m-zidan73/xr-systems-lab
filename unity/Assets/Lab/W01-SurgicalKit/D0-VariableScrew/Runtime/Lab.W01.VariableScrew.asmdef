@@ -1,0 +1,14 @@
+{
+    "name": "Lab.W01.VariableScrew",
+    "rootNamespace": "Lab.W01.VariableScrew",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

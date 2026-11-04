@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d712c47b8d19f243872f7a95f5ac3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewSpec
+  displayName: 6.0 mm Locking Cortical
+  diameterMm: 6
+  locking: 1
+  trayColor: {r: 0.9372549, g: 0.9019608, b: 0.2901961, a: 1}
+  availableLengthsMm:
+  - 25
+  - 30
+  - 35
+  - 40
+  - 45
+  - 50
+  - 55
+  - 60
+  - 65
+  - 70
+  threadHoleDrillMm: 4.5
+  glideHoleDrillMm: 6
+  threadPitchMm: 2
+  threadStarts: 1
+  baseMeshLengthMm: 20
+  headEndMm: 2.5
+  tipLengthMm: 2
+  notes: Illustrative example data assembled for a prototype. Colours follow a reference
+    product photo; lengths and drill sizes are plausible but invented. Not a real
+    manufacturer's specification and not clinical guidance.

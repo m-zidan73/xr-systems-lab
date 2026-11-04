@@ -1,0 +1,20 @@
+{
+    "name": "Lab.W01.VariableScrew.Editor",
+    "rootNamespace": "Lab.W01.VariableScrew.EditorTools",
+    "references": [
+        "Lab.W01.VariableScrew",
+        "Lab.Core",
+        "Lab.Core.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

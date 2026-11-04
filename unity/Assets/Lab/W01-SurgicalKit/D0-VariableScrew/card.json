@@ -1,0 +1,31 @@
+{
+  "id": "W01-D0-variable-screw",
+  "week": 1,
+  "weekTitle": "Surgical-training kit",
+  "day": 0,
+  "date": "2026-11-04",
+  "status": "wip",
+  "title": "Variable Screw",
+  "pitch": "One screw mesh that changes length through data and snaps only to sizes the catalog ships.",
+  "tags": ["Unity", "C#", "HLSL shaders", "Editor tools", "ScriptableObjects"],
+  "shows": ["Data-driven tools for training content", "Custom URP shaders", "Editor scripting"],
+  "testedOn": ["PC"],
+  "howItWorks": "",
+  "decisions": [],
+  "next": "",
+  "media": {
+    "gif": "media/W01-D0-variable-screw.gif",
+    "video": ""
+  },
+  "webDemo": "",
+  "builtWith": "Built with Claude Code + MCP for Unity + Blender MCP. Design decisions and explanation: Mohitur Rahman Zidan.",
+  "assets": [
+    {
+      "name": "Screw and thread meshes",
+      "source": "Made for this project in Blender",
+      "licence": "Own work",
+      "changes": ""
+    }
+  ],
+  "disclaimer": "Sizes, colours and catalogs are illustrative example data, not clinical guidance."
+}
