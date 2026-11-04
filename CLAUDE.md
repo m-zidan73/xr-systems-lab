@@ -10,7 +10,7 @@ One Unity project and one small system per build day. Each system is a piece of 
 - `blender/`: `.blend` sources, named `<week>-<day>-<name>.blend`.
 - `media/`: GIFs under 5 MB. No videos in the repo.
 - `web/`: only when a card calls for the web.
-- `site/`: the README and portfolio page generator. `tools/`: `clip-to-gif.mjs`.
+- `site/`: the README and portfolio page generator. `tools/`: `clip-to-gif.mjs`, `scrub-paths.mjs`.
 
 `README.md` files and `site/dist/` are generated from `card.json`. Edit the card, not the output.
 
@@ -41,10 +41,11 @@ The credit line in `builtWith` names the tools used and ends with exactly: `Desi
 
 Only the owner's own models, CC0 assets, or CC-BY assets with credit, all listed in the card's `assets`. An unknown licence stays out. AI-generated models stay out.
 
-Exported files can store local paths, and a local pre-commit check blocks them:
+Blender can store local paths inside the files it writes: an `.fbx` holds the `.blend` file's full path, and a `.blend` can hold folders from a saved file browser panel. A local pre-commit check reads the staged version of these files and blocks those paths.
 
-- Save `.blend` files with Compress off, so the check can read them.
-- An `.fbx` from Blender stores the `.blend` file's full path. Overwrite that string at the same length before committing.
+1. Save `.blend` files with Compress off, so the check can read them.
+2. Run `node tools/scrub-paths.mjs <file>` on each exported `.fbx` and saved `.blend`. It blanks the paths and keeps the file's length and layout.
+3. Then `git add` the file. A blocked commit stays blocked until the cleaned file is staged again.
 
 ## No private notes in this repo
 
@@ -60,6 +61,7 @@ node --test "site/test/*.test.mjs"
 node --test "tools/test/*.test.mjs"
 node site/build.mjs
 node tools/clip-to-gif.mjs "<recording.mp4>" media/<id>.gif
+node tools/scrub-paths.mjs <file.fbx or file.blend>
 ```
 
 ## A day is done when
