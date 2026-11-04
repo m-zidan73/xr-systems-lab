@@ -27,6 +27,7 @@ namespace Lab.Core.EditorTools
             camera.clearFlags = CameraClearFlags.SolidColor;
             camera.backgroundColor = new Color(0.24f, 0.26f, 0.30f);
             camera.fieldOfView = 38f;
+            camera.nearClipPlane = 0.01f;   // The lowest a scene can save. OrbitCamera goes smaller at runtime.
             camera.farClipPlane = 20f;
             cameraObject.AddComponent<AudioListener>();
             cameraObject.transform.position = new Vector3(0f, 0.25f, -0.6f);

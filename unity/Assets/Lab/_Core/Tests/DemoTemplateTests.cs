@@ -35,6 +35,7 @@ namespace Lab.Core.Tests
             var orbit = cameras[0].GetComponent<OrbitCamera>();
             Assert.IsNotNull(orbit);
             Assert.LessOrEqual(orbit.NearClip, 0.001f);
+            Assert.LessOrEqual(cameras[0].nearClipPlane, 0.0101f, "Small parts must show before Play too");
             Assert.AreEqual(0.65f, orbit.StartDistance, 1e-5f);
             Assert.AreEqual("MainCamera", cameras[0].tag);
         }
