@@ -44,6 +44,18 @@ test('system README keeps symbols and cannot inject HTML', () => {
   assert.ok(!md.includes('<b>'));
 });
 
+test('text written as full sentences does not double its full stop', () => {
+  const { card, options } = setup({
+    decisions: [{ choice: 'An index slider.', alternative: 'A float slider.', why: 'Only real sizes exist.' }],
+    assets: [{ name: 'Model', source: 'Made in Blender.', licence: 'Own work.', changes: '' }],
+  });
+  for (const output of [renderSitePage([card], options), renderSystemReadme(card, options)]) {
+    assert.ok(!output.includes('..') || output.includes('../'), output);
+    assert.ok(!/[a-z]\.\./.test(output), output);
+  }
+  assert.ok(renderSitePage([card], options).includes('instead of A float slider.'));
+});
+
 test('root README groups by week and escapes pipes', () => {
   const { card, options } = setup({ weekTitle: 'Kit', pitch: 'a | b' });
   const md = renderRootReadme([card], options);

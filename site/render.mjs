@@ -5,6 +5,8 @@ const NO_SYSTEMS = 'No finished systems yet.';
 
 const toPosix = path => path.replace(/\\/g, '/');
 const cardFolder = (card, repoRoot) => toPosix(relative(repoRoot, card._dir));
+// For text placed before a full stop of ours, since the owner may have written a full sentence.
+const withoutFinalStop = text => String(text).trim().replace(/\.+$/, '');
 
 export function escapeHtml(text) {
   return String(text)
@@ -59,7 +61,7 @@ export function renderSystemReadme(card, { repoRoot }) {
     lines.push('', '## Asset credits', '');
     for (const asset of card.assets) {
       const changes = asset.changes ? ` Changes: ${mdText(asset.changes)}` : '';
-      lines.push(`- **${mdText(asset.name)}:** ${mdText(asset.source)}. Licence: ${mdText(asset.licence)}.${changes}`);
+      lines.push(`- **${mdText(asset.name)}:** ${mdText(withoutFinalStop(asset.source))}. Licence: ${mdText(withoutFinalStop(asset.licence))}.${changes}`);
     }
   }
   lines.push('', '---', '', mdText(card.builtWith), '');
@@ -84,7 +86,7 @@ export function renderRootReadme(doneCards, { repoRoot, config }) {
 }
 
 function renderDecisions(card) {
-  const items = card.decisions.map(d => `<li><strong>${escapeHtml(d.choice)}</strong> <span class="alternative">instead of ${escapeHtml(d.alternative)}.</span> ${escapeHtml(d.why)}</li>`);
+  const items = card.decisions.map(d => `<li><strong>${escapeHtml(d.choice)}</strong> <span class="alternative">instead of ${escapeHtml(withoutFinalStop(d.alternative))}.</span> ${escapeHtml(d.why)}</li>`);
   return `<ul class="decisions">${items.join('')}</ul>`;
 }
 
@@ -92,7 +94,7 @@ function renderAssets(card) {
   if (!card.assets?.length) return '';
   const items = card.assets.map(a => {
     const changes = a.changes ? ` Changes: ${escapeHtml(a.changes)}` : '';
-    return `<li>${escapeHtml(a.name)}: ${escapeHtml(a.source)}. Licence: ${escapeHtml(a.licence)}.${changes}</li>`;
+    return `<li>${escapeHtml(a.name)}: ${escapeHtml(withoutFinalStop(a.source))}. Licence: ${escapeHtml(withoutFinalStop(a.licence))}.${changes}</li>`;
   });
   return `<details class="assets"><summary>Asset credits</summary><ul>${items.join('')}</ul></details>`;
 }
