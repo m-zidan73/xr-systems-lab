@@ -31,10 +31,10 @@ Material:
     m_Floats:
     - _CoreScale: 1
     - _HeadEnd: 0.0025
-    - _Metallic: 0.3
+    - _Metallic: 0.7
     - _NormalStrength: 1
     - _ShaftLength: 0.0155
-    - _Smoothness: 0.62
+    - _Smoothness: 0.5
     - _Stretch: 0
     - _ThreadStarts: 1
     - _ThreadTiling: 26

@@ -3,16 +3,22 @@
   "week": 1,
   "weekTitle": "Surgical-training kit",
   "day": 0,
-  "date": "2026-11-04",
-  "status": "wip",
+  "date": "2026-11-05",
+  "status": "done",
   "title": "Variable Screw",
   "pitch": "One screw mesh that changes length through data and snaps only to sizes the catalog ships.",
   "tags": ["Unity", "C#", "HLSL shaders", "Editor tools", "ScriptableObjects"],
   "shows": ["Data-driven tools for training content", "Custom URP shaders", "Editor scripting"],
   "testedOn": ["PC"],
-  "howItWorks": "",
-  "decisions": [],
-  "next": "",
+  "howItWorks": "Currently, it's just a demo of how a single mesh can be repurposed for different lengths of screws by simply sliding through variable lengths. The primary goal is to recycle a single mesh and texture for better performance in medical application.",
+  "decisions": [
+    {
+      "choice": "One of the decisions was to create a shader version of the screw.",
+      "alternative": "While the Helix version looked more realistic from different viewing angles, it cost more performance.",
+      "why": "On the other hand, the shader is just faking the spirals, so it can be used on lighter devices."
+    }
+  ],
+  "next": "Currently, the goal is not to develop an entire medical VR application, but we aim to create small projects like these that eventually can be assembled to create a full-fledged VR application when requested.",
   "media": {
     "gif": "media/W01-D0-variable-screw.gif",
     "video": ""
@@ -22,8 +28,8 @@
   "assets": [
     {
       "name": "Screw and thread meshes",
-      "source": "Made for this project in Blender",
-      "licence": "Own work",
+      "source": "Modelled in Blender with Claude Code + Blender MCP",
+      "licence": "Made for this project",
       "changes": ""
     }
   ],
