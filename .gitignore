@@ -34,3 +34,5 @@ test-results*.xml
 Thumbs.db
 Desktop.ini
 .claude/settings.local.json
+# Working notes from Claude's process skills
+.superpowers/

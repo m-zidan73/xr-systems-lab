@@ -53,7 +53,26 @@ test('text written as full sentences does not double its full stop', () => {
     assert.ok(!output.includes('..') || output.includes('../'), output);
     assert.ok(!/[a-z]\.\./.test(output), output);
   }
-  assert.ok(renderSitePage([card], options).includes('instead of A float slider.'));
+});
+
+test('a decision written as full sentences reads as written on both surfaces', () => {
+  const decisions = [{ choice: 'We chose a shader.', alternative: 'While the mesh looked better, it cost more.', why: 'On the other hand, the shader is light.' }];
+  const { card, options } = setup({ decisions });
+  const html = renderSitePage([card], options);
+  const md = renderSystemReadme(card, options);
+  for (const output of [html, md]) {
+    assert.ok(!output.toLowerCase().includes('instead of'), output);
+    for (const text of ['We chose a shader.', 'Alternative:', 'While the mesh looked better, it cost more.', 'Why:', 'On the other hand, the shader is light.']) {
+      assert.ok(output.includes(text), text);
+    }
+  }
+});
+
+test('root README says how to open the project, with its Unity version', () => {
+  const { options } = setup();
+  const md = renderRootReadme([], { ...options, unityVersion: '6000.4.9f1' });
+  for (const text of ['Git LFS', '`unity`', '`6000.4.9f1`', 'Demo']) assert.ok(md.includes(text), text);
+  assert.ok(renderRootReadme([], options).includes('Git LFS'), 'still explains itself without a version');
 });
 
 test('root README groups by week and escapes pipes', () => {

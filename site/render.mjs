@@ -54,7 +54,7 @@ export function renderSystemReadme(card, { repoRoot }) {
   if (card.disclaimer) lines.push('', `> ${mdText(card.disclaimer)}`);
   lines.push('', '## How it works', '', mdText(card.howItWorks), '', '## My decisions', '');
   for (const decision of card.decisions) {
-    lines.push(`- **Chose:** ${mdText(decision.choice)} **Instead of:** ${mdText(decision.alternative)} **Why:** ${mdText(decision.why)}`);
+    lines.push(`- **Decision:** ${mdText(decision.choice)} **Alternative:** ${mdText(decision.alternative)} **Why:** ${mdText(decision.why)}`);
   }
   lines.push('', '## Next steps', '', mdText(card.next));
   if (card.assets?.length) {
@@ -68,7 +68,7 @@ export function renderSystemReadme(card, { repoRoot }) {
   return lines.join('\n');
 }
 
-export function renderRootReadme(doneCards, { repoRoot, config }) {
+export function renderRootReadme(doneCards, { repoRoot, config, unityVersion }) {
   const links = [`[Portfolio page](${config.siteUrl})`, ...Object.entries(config.links).map(([label, url]) => `[${mdCell(label)}](${url})`)];
   const lines = [GENERATED_NOTE, `# ${mdText(config.siteTitle)}`, '', mdText(config.intro), '', links.join(' · '), ''];
   if (doneCards.length === 0) lines.push(NO_SYSTEMS, '');
@@ -82,11 +82,20 @@ export function renderRootReadme(doneCards, { repoRoot, config }) {
     }
     lines.push('');
   }
+  const editor = unityVersion ? `Unity \`${unityVersion}\`` : 'the Unity version in `unity/ProjectSettings/ProjectVersion.txt`';
+  lines.push(
+    '## Open it in Unity',
+    '',
+    '1. Install [Git LFS](https://git-lfs.com) before you clone, because the models are stored with it.',
+    `2. In Unity Hub, add the \`unity\` folder and open it with ${editor}.`,
+    "3. Open a `Demo` scene from a system's folder and press Play. Right-drag orbits, middle-drag or Shift + right-drag pans, and scroll zooms.",
+    '',
+  );
   return lines.join('\n');
 }
 
 function renderDecisions(card) {
-  const items = card.decisions.map(d => `<li><strong>${escapeHtml(d.choice)}</strong> <span class="alternative">instead of ${escapeHtml(withoutFinalStop(d.alternative))}.</span> ${escapeHtml(d.why)}</li>`);
+  const items = card.decisions.map(d => `<li><strong>${escapeHtml(d.choice)}</strong> <span class="alternative">Alternative: ${escapeHtml(d.alternative)}</span> Why: ${escapeHtml(d.why)}</li>`);
   return `<ul class="decisions">${items.join('')}</ul>`;
 }
 

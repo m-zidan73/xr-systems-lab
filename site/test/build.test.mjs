@@ -32,6 +32,14 @@ test('only done cards reach the README, index and site', () => {
   assert.ok(!existsSync(join(outDir, 'media/W01-D1-unfinished.gif')));
 });
 
+test('the root README takes the Unity version from the project', () => {
+  const { root } = makeRepo({ cards: [] });
+  mkdirSync(join(root, 'unity/ProjectSettings'), { recursive: true });
+  writeFileSync(join(root, 'unity/ProjectSettings/ProjectVersion.txt'), 'm_EditorVersion: 6000.4.9f1\nm_EditorVersionWithRevision: 6000.4.9f1 (abc)\n');
+  assert.deepEqual(build({ repoRoot: root, outDir: join(root, 'dist') }).errors, []);
+  assert.ok(readFileSync(join(root, 'README.md'), 'utf8').includes('`6000.4.9f1`'));
+});
+
 test('no finished systems still builds a page', () => {
   const { root } = makeRepo({ cards: [] });
   const outDir = join(root, 'dist');

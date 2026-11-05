@@ -15,6 +15,12 @@ function loadConfig(repoRoot) {
   }
 }
 
+function readUnityVersion(repoRoot) {
+  const path = join(repoRoot, 'unity', 'ProjectSettings', 'ProjectVersion.txt');
+  if (!existsSync(path)) return null;
+  return readFileSync(path, 'utf8').match(/^m_EditorVersion:\s*(\S+)/m)?.[1] ?? null;
+}
+
 function loadAndCheckCards(repoRoot) {
   const errors = [];
   const cards = [];
@@ -52,7 +58,7 @@ export function build({ repoRoot, outDir }) {
   if (errors.length > 0) return { cards: doneCards, errors };
 
   const template = readFileSync(join(siteDir, 'template.html'), 'utf8');
-  const options = { repoRoot, config: loadedConfig.config, template };
+  const options = { repoRoot, config: loadedConfig.config, template, unityVersion: readUnityVersion(repoRoot) };
 
   for (const card of doneCards) {
     writeFileSync(join(card._dir, 'README.md'), renderSystemReadme(card, options));
