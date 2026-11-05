@@ -22,6 +22,16 @@ namespace Lab.Core
                 Mathf.Clamp(pitchDeg - mouseDelta.y * sensitivity, -PitchLimitDeg, PitchLimitDeg));
         }
 
+        /// <summary>
+        /// Moves the orbit point across the view. One pixel of mouse movement covers the same
+        /// on-screen distance at any zoom, so the part being dragged stays under the cursor.
+        /// </summary>
+        public static Vector3 Pan(Vector3 target, Quaternion rotation, Vector2 mouseDelta, float distance, float fieldOfViewDeg, float screenHeightPixels)
+        {
+            var metresPerPixel = 2f * distance * Mathf.Tan(fieldOfViewDeg * 0.5f * Mathf.Deg2Rad) / Mathf.Max(screenHeightPixels, 1f);
+            return target - rotation * new Vector3(mouseDelta.x, mouseDelta.y, 0f) * metresPerPixel;
+        }
+
         /// <summary>Uses only the sign of the scroll, because scroll units differ between setups.</summary>
         public static float Zoom(float distance, float scrollY, float minDistance, float maxDistance)
         {

@@ -5,7 +5,8 @@ namespace Lab.Core
 {
     /// <summary>
     /// Orbits a point in front of the camera for inspecting small parts: hold the right
-    /// mouse button to rotate, scroll to zoom. The left button stays free for interaction.
+    /// mouse button to rotate, the middle button or Shift + right to pan, scroll to zoom.
+    /// The left button stays free for interaction.
     /// </summary>
     [RequireComponent(typeof(Camera))]
     public class OrbitCamera : MonoBehaviour
@@ -16,6 +17,7 @@ namespace Lab.Core
         [SerializeField] float sensitivity = 0.2f;
         [SerializeField] float nearClip = 0.001f;
 
+        Camera _camera;
         Vector3 _target;
         float _yaw;
         float _pitch;
@@ -35,7 +37,8 @@ namespace Lab.Core
         /// </summary>
         public void ApplyNearClip()
         {
-            GetComponent<Camera>().nearClipPlane = nearClip;
+            if (_camera == null) _camera = GetComponent<Camera>();
+            _camera.nearClipPlane = nearClip;
         }
 
         void Awake()
@@ -53,8 +56,17 @@ namespace Lab.Core
             var mouse = Mouse.current;
             if (mouse == null) return;
 
-            if (mouse.rightButton.isPressed)
-                (_yaw, _pitch) = OrbitMath.Rotate(_yaw, _pitch, mouse.delta.ReadValue(), sensitivity);
+            var mouseDelta = mouse.delta.ReadValue();
+            var shiftHeld = Keyboard.current != null && Keyboard.current.shiftKey.isPressed;
+            if (mouse.middleButton.isPressed || (mouse.rightButton.isPressed && shiftHeld))
+            {
+                var rotation = Quaternion.Euler(_pitch, _yaw, 0f);
+                _target = OrbitMath.Pan(_target, rotation, mouseDelta, _distance, _camera.fieldOfView, _camera.pixelHeight);
+            }
+            else if (mouse.rightButton.isPressed)
+            {
+                (_yaw, _pitch) = OrbitMath.Rotate(_yaw, _pitch, mouseDelta, sensitivity);
+            }
             _distance = OrbitMath.Zoom(_distance, mouse.scroll.ReadValue().y, minDistance, maxDistance);
 
             transform.SetPositionAndRotation(
