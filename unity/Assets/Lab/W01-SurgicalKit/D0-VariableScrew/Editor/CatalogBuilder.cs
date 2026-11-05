@@ -37,6 +37,8 @@ namespace Lab.W01.VariableScrew.EditorTools
         [MenuItem("Implants/Create Example Catalogs")]
         public static void CreateExampleCatalogs()
         {
+            if (!OverwriteGuard.Allow($"{DataFolder}/CatalogA_ChromaticOrtho/CatalogA_ChromaticOrtho.asset")) return;
+
             EnsureFolder(RootFolder);
             EnsureFolder(DataFolder);
 

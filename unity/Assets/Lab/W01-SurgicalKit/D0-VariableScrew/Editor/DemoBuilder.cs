@@ -26,6 +26,8 @@ namespace Lab.W01.VariableScrew.EditorTools
         [MenuItem("Implants/Build Demo Scene")]
         public static void BuildDemo()
         {
+            if (!OverwriteGuard.Allow(ScenePath)) return;
+
             var catalog = FindCatalog();
             if (catalog == null)
             {
@@ -301,7 +303,7 @@ namespace Lab.W01.VariableScrew.EditorTools
 
             EditorSceneManager.MarkAllScenesDirty();
             Debug.Log("Lighting fixed: shadows off, three lights, brighter ambient, metallic " +
-                      "dropped to 0.45. Save the scene to keep it.");
+                      "dropped to 0.30. Save the scene to keep it.");
         }
 
         static ImplantCatalog FindCatalog()

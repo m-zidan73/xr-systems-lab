@@ -28,6 +28,8 @@ namespace Lab.W01.VariableScrew.EditorTools
         [MenuItem("Implants/Build Helix Demo Scene")]
         public static void BuildHelixDemo()
         {
+            if (!OverwriteGuard.Allow(ScenePath)) return;
+
             var catalog = FindCatalog();
             if (catalog == null || catalog.screws == null || catalog.screws.Length == 0)
             {
