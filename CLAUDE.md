@@ -39,7 +39,7 @@ The credit line in `builtWith` names the tools used and ends with exactly: `Desi
 
 ## Assets
 
-Only the owner's own models, CC0 assets, or CC-BY assets with credit, all listed in the card's `assets`. An unknown licence stays out. AI-generated models stay out.
+Only models made for this lab (by the owner, or by Claude through Blender MCP under the owner's direction, and credited that way), CC0 assets, or CC-BY assets with credit, all listed in the card's `assets`. An unknown licence stays out. Models from text-to-3D generators stay out.
 
 Blender can store local paths inside the files it writes: an `.fbx` holds the `.blend` file's full path, and a `.blend` can hold folders from a saved file browser panel. A local pre-commit check reads the staged version of these files and blocks those paths.
 
@@ -56,7 +56,7 @@ Plans, weekly notes and drafts live outside this repo. Never bypass the pre-comm
 Close the project in the Unity Editor before running Unity commands. They take minutes.
 
 ```bash
-unity test unity --mode EditMode --output "$TEMP/lab-tests.xml"
+unity test ./unity --mode EditMode --output "$TEMP/lab-tests.xml"
 node --test "site/test/*.test.mjs"
 node --test "tools/test/*.test.mjs"
 node site/build.mjs
