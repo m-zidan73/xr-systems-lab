@@ -1,0 +1,23 @@
+{
+    "name": "Lab.W01.ColourCodedHoles.Editor",
+    "rootNamespace": "Lab.W01.ColourCodedHoles.EditorTools",
+    "references": [
+        "Lab.W01.ColourCodedHoles",
+        "Lab.W01.VariableScrew",
+        "Lab.W01.VariableScrew.Editor",
+        "Lab.Core",
+        "Lab.Core.Editor",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

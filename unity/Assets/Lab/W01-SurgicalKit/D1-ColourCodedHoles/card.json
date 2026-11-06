@@ -1,0 +1,31 @@
+{
+  "id": "W01-D1-colour-coded-holes",
+  "week": 1,
+  "weekTitle": "Surgical-training kit",
+  "day": 1,
+  "date": "2026-11-06",
+  "status": "wip",
+  "title": "Colour-Coded Holes",
+  "pitch": "Plate holes take their colour from the implant catalog and only accept a screw of the matching size.",
+  "tags": ["Unity", "C#", "Interaction design", "ScriptableObjects", "Editor tools"],
+  "shows": ["Rule-based checks for training content", "Reusable mouse interaction", "Data-driven content"],
+  "testedOn": ["PC"],
+  "howItWorks": "",
+  "decisions": [],
+  "next": "",
+  "media": {
+    "gif": "media/W01-D1-colour-coded-holes.gif",
+    "video": ""
+  },
+  "webDemo": "",
+  "builtWith": "Built with Claude Code + Unity CLI. Design decisions and explanation: Mohitur Rahman Zidan.",
+  "assets": [
+    {
+      "name": "Screw meshes",
+      "source": "From the Variable Screw system, modelled in Blender with Claude Code + Blender MCP",
+      "licence": "Made for this project",
+      "changes": ""
+    }
+  ],
+  "disclaimer": "Sizes, colours and catalogs are illustrative example data, not clinical guidance."
+}

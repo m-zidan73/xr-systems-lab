@@ -1,0 +1,17 @@
+{
+    "name": "Lab.W01.ColourCodedHoles",
+    "rootNamespace": "Lab.W01.ColourCodedHoles",
+    "references": [
+        "Lab.Core",
+        "Lab.W01.VariableScrew"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
