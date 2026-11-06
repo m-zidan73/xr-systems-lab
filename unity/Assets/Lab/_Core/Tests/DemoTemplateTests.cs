@@ -69,5 +69,13 @@ namespace Lab.Core.Tests
             }
             Assert.IsTrue(_scene.GetRootGameObjects().Any(root => root.name == "Floor"));
         }
+
+        [Test]
+        public void Template_FloorIsDarkAndMatte_SoPartsStandOut()
+        {
+            var floor = _scene.GetRootGameObjects().Single(root => root.name == "Floor").GetComponent<Renderer>().sharedMaterial;
+            Assert.LessOrEqual(floor.GetFloat("_Smoothness"), 0.2f);
+            Assert.LessOrEqual(floor.GetColor("_BaseColor").grayscale, 0.3f);
+        }
     }
 }

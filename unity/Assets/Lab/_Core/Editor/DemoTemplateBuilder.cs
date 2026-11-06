@@ -7,7 +7,8 @@ namespace Lab.Core.EditorTools
     /// <summary>Builds the scene every demo starts from: lighting, a floor and an orbit camera.</summary>
     public static class DemoTemplateBuilder
     {
-        const string ScenePath = "Assets/Lab/_Core/DemoTemplate.unity";
+        public const string ScenePath = "Assets/Lab/_Core/DemoTemplate.unity";
+        const string FloorMaterialPath = "Assets/Lab/_Core/Floor.mat";
         const float FloorSizeMetres = 2f;
         const float UnityPlaneSizeMetres = 10f;
 
@@ -21,6 +22,7 @@ namespace Lab.Core.EditorTools
             var floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
             floor.name = "Floor";
             floor.transform.localScale = Vector3.one * (FloorSizeMetres / UnityPlaneSizeMetres);
+            floor.GetComponent<Renderer>().sharedMaterial = FloorMaterial();
 
             var cameraObject = new GameObject("Main Camera") { tag = "MainCamera" };
             var camera = cameraObject.AddComponent<Camera>();
@@ -36,6 +38,22 @@ namespace Lab.Core.EditorTools
 
             EditorSceneManager.SaveScene(scene, ScenePath);
             AssetDatabase.SaveAssets();
+        }
+
+        // Dark and matte, so small parts stand out and the key light leaves no glare across the view.
+        static Material FloorMaterial()
+        {
+            var material = AssetDatabase.LoadAssetAtPath<Material>(FloorMaterialPath);
+            if (material == null)
+            {
+                material = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+                AssetDatabase.CreateAsset(material, FloorMaterialPath);
+            }
+            material.SetColor("_BaseColor", new Color(0.2f, 0.21f, 0.23f));
+            material.SetFloat("_Metallic", 0f);
+            material.SetFloat("_Smoothness", 0.15f);
+            EditorUtility.SetDirty(material);
+            return material;
         }
     }
 }
