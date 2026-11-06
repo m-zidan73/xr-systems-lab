@@ -10,7 +10,7 @@
   "tags": ["Unity", "C#", "HLSL shaders", "Editor tools", "ScriptableObjects"],
   "shows": ["Data-driven tools for training content", "Custom URP shaders", "Editor scripting"],
   "testedOn": ["PC"],
-  "howItWorks": "Currently, it's just a demo of how a single mesh can be repurposed for different lengths of screws by simply sliding through variable lengths. The primary goal is to recycle a single mesh and texture for better performance in medical application.",
+  "howItWorks": "Currently, it's just a demo of how a single mesh can be repurposed for different lengths of screws by simply sliding through variable lengths. The primary goal is to recycle a single mesh and texture for better performance in medical applications.",
   "decisions": [
     {
       "choice": "One of the decisions was to create a shader version of the screw.",

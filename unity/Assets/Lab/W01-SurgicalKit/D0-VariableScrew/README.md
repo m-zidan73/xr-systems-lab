@@ -11,7 +11,7 @@ Tested on: PC
 
 ## How it works
 
-Currently, it's just a demo of how a single mesh can be repurposed for different lengths of screws by simply sliding through variable lengths. The primary goal is to recycle a single mesh and texture for better performance in medical application.
+Currently, it's just a demo of how a single mesh can be repurposed for different lengths of screws by simply sliding through variable lengths. The primary goal is to recycle a single mesh and texture for better performance in medical applications.
 
 ## My decisions
 
