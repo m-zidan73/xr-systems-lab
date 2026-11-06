@@ -32,6 +32,7 @@ Shader "ScrewSystem/Screw"
         // 1 leaves the shaft at the nominal diameter, which is what the painted thread
         // wants. The geometry-thread variant sets this to core over major.
         [HideInInspector] _CoreScale    ("Core Scale", Float)     = 1
+        [HideInInspector] _Highlight    ("Highlight", Float)      = 0
     }
 
     SubShader
@@ -61,6 +62,7 @@ Shader "ScrewSystem/Screw"
             float  _HeadEnd;
             float  _ShaftLength;
             float  _CoreScale;
+            float  _Highlight;
         CBUFFER_END
         ENDHLSL
 
@@ -163,6 +165,7 @@ Shader "ScrewSystem/Screw"
                 input.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(IN.positionCS);
 
                 half4 color = UniversalFragmentPBR(input, surface);
+                color.rgb = lerp(color.rgb, color.rgb * 1.5 + 0.06, _Highlight);   // set by Grabbable on hover
                 color.rgb = MixFog(color.rgb, IN.fogFactor);
                 return color;
             }

@@ -24,6 +24,7 @@ Shader "ScrewSystem/ScrewHelix"
         // The crest lands on major, the root on core. Nominal diameter is the crest.
         [HideInInspector] _CoreRadius   ("Core Radius", Float)    = 0.00125
         [HideInInspector] _MajorRadius  ("Major Radius", Float)   = 0.00175
+        [HideInInspector] _Highlight    ("Highlight", Float)      = 0
     }
 
     SubShader
@@ -51,6 +52,7 @@ Shader "ScrewSystem/ScrewHelix"
             float  _Pitch;
             float  _CoreRadius;
             float  _MajorRadius;
+            float  _Highlight;
         CBUFFER_END
         ENDHLSL
 
@@ -132,6 +134,7 @@ Shader "ScrewSystem/ScrewHelix"
                 input.normalizedScreenSpaceUV = GetNormalizedScreenSpaceUV(IN.positionCS);
 
                 half4 color = UniversalFragmentPBR(input, surface);
+                color.rgb = lerp(color.rgb, color.rgb * 1.5 + 0.06, _Highlight);   // set by Grabbable on hover
                 color.rgb = MixFog(color.rgb, IN.fogFactor);
                 return color;
             }

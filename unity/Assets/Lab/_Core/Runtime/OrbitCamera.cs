@@ -31,6 +31,9 @@ namespace Lab.Core
 
         public float NearClip => nearClip;
 
+        /// <summary>Turned off while something is held, so the scroll wheel turns the part instead.</summary>
+        public bool ZoomEnabled { get; set; } = true;
+
         /// <summary>
         /// Set while running because Unity raises a saved near clip below 0.01 when a scene
         /// loads, and at 0.01 a small part clips away as the camera zooms in close.
@@ -67,7 +70,8 @@ namespace Lab.Core
             {
                 (_yaw, _pitch) = OrbitMath.Rotate(_yaw, _pitch, mouseDelta, sensitivity);
             }
-            _distance = OrbitMath.Zoom(_distance, mouse.scroll.ReadValue().y, minDistance, maxDistance);
+            if (ZoomEnabled)
+                _distance = OrbitMath.Zoom(_distance, mouse.scroll.ReadValue().y, minDistance, maxDistance);
 
             transform.SetPositionAndRotation(
                 OrbitMath.Position(_target, _yaw, _pitch, _distance),
