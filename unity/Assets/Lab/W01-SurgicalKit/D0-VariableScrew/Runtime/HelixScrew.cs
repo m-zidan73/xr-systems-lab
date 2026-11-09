@@ -30,10 +30,6 @@ namespace Lab.W01.VariableScrew
 
         const float MmToUnits = ScrewUnits.MillimetresToUnits;
 
-        /// <summary>Shaft radius of the authored mesh, in metres. 3.5 mm nominal.</summary>
-        public const float MeshShaftRadius = 0.00175f;
-        const float MeshNominalDiameterMm  = 3.5f;
-
         [SerializeField] ScrewSpec spec;
         [SerializeField] float lengthMm = 16f;
 
@@ -73,7 +69,7 @@ namespace Lab.W01.VariableScrew
 
             // Diameter is not modelled into the mesh, so scale it in. X and Y only: Z carries
             // length and pitch, which must not scale with diameter.
-            float widthScale = spec.diameterMm / MeshNominalDiameterMm;
+            float widthScale = ScrewUnits.WidthScale(spec.diameterMm);
             transform.localScale = new Vector3(widthScale, widthScale, 1f) * ScrewUnits.WorldScale;
 
             // A screw is named by its MAJOR diameter, the crest of the thread, so the shaft
@@ -107,8 +103,8 @@ namespace Lab.W01.VariableScrew
                 threadBlock.SetFloat(PitchId,    Mathf.Max(spec.threadPitchMm, 0.05f) * MmToUnits);
                 // Object space. The transform still scales X and Y by nominal over 3.5, so the
                 // crest at the mesh radius lands exactly on the nominal diameter.
-                threadBlock.SetFloat(MajorRadiusId, MeshShaftRadius);
-                threadBlock.SetFloat(CoreRadiusId,  MeshShaftRadius * coreRatio);
+                threadBlock.SetFloat(MajorRadiusId, ScrewUnits.MeshShaftRadius);
+                threadBlock.SetFloat(CoreRadiusId,  ScrewUnits.MeshShaftRadius * coreRatio);
                 threadBlock.SetColor(BaseColorId, spec.trayColor);
                 threadRenderer.SetPropertyBlock(threadBlock);
             }
@@ -118,7 +114,7 @@ namespace Lab.W01.VariableScrew
                 shaftCollider.direction = 2;
                 shaftCollider.height    = lengthMm * MmToUnits;
                 shaftCollider.center    = new Vector3(0f, 0f, lengthMm * MmToUnits * 0.5f);
-                shaftCollider.radius    = MeshShaftRadius;
+                shaftCollider.radius    = ScrewUnits.MeshShaftRadius;
             }
 
             if (tipPoint != null)

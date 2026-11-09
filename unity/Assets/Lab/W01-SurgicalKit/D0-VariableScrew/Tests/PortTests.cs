@@ -15,7 +15,7 @@ namespace Lab.W01.VariableScrew.Tests
     public class PortTests
     {
         const int ScrewsInEachScene = 10;
-        const float DemoStartDistance = 0.145f;
+        const float DemoStartDistance = 0.17f;
 
         static T[] InScene<T>(Scene scene) where T : Component =>
             scene.GetRootGameObjects().SelectMany(root => root.GetComponentsInChildren<T>(true)).ToArray();

@@ -37,6 +37,26 @@ namespace Lab.W01.VariableScrew
         /// <summary>A length in millimetres, in final world units including world scale.</summary>
         public static float MmWorld(float millimetres) => millimetres * MillimetresToUnits * WorldScale;
 
+        /// <summary>Shaft diameter the screw mesh was modelled at.</summary>
+        public const float MeshNominalDiameterMm = 3.5f;
+
+        /// <summary>Head diameter the screw mesh was modelled at.</summary>
+        public const float MeshHeadDiameterMm = 6f;
+
+        /// <summary>Shaft radius of the screw mesh in the authored metre space.</summary>
+        public const float MeshShaftRadius = MeshNominalDiameterMm * 0.5f * MillimetresToUnits;
+
+        /// <summary>
+        /// X and Y scale that gives the mesh this diameter. Diameter isn't modelled into the
+        /// mesh, so it is scaled in. Z carries length and pitch and never scales with it. A
+        /// zero or invalid diameter draws the mesh at its own width.
+        /// </summary>
+        public static float WidthScale(float diameterMm) =>
+            diameterMm > 0f ? diameterMm / MeshNominalDiameterMm : 1f;
+
+        /// <summary>How wide the head of a screw of this diameter is drawn, in millimetres.</summary>
+        public static float HeadDiameterMm(float diameterMm) => MeshHeadDiameterMm * WidthScale(diameterMm);
+
         /// <summary>
         /// Near clip plane that suits the current scale. Unity's 0.3 default would put the
         /// whole screw behind the camera.

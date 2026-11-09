@@ -9,9 +9,9 @@ namespace Lab.W01.VariableScrew.EditorTools
     /// <summary>Gives the demo scenes the lab's orbit camera, sized for a tray of screws.</summary>
     public static class DemoCameraSetup
     {
-        // Far enough back to show all ten screws, including the hero above the tray.
-        const float StartDistance = 0.145f;
-        static readonly Vector3 StartPosition = new Vector3(0f, 0.0065f, -StartDistance);
+        // Far enough back to show all ten screws at their real widths, including the hero above the tray.
+        const float StartDistance = 0.17f;
+        static readonly Vector3 StartPosition = new Vector3(0f, 0.008f, -StartDistance);
 
         public static void Apply(Camera cam)
         {
@@ -23,7 +23,7 @@ namespace Lab.W01.VariableScrew.EditorTools
             EditorUtility.SetDirty(cam.transform);
         }
 
-        /// <summary>Changes only the camera, so the tuned materials and tray stay as they are.</summary>
+        /// <summary>Changes only the camera and the heights in the stack, so tuned materials and sizes stay as they are.</summary>
         [MenuItem("Implants/Add Orbit Camera To Demo Scenes")]
         public static void UpgradeScenes()
         {
@@ -34,6 +34,10 @@ namespace Lab.W01.VariableScrew.EditorTools
                     .Select(root => root.GetComponent<Camera>())
                     .First(found => found != null && found.name == "Main Camera");
                 Apply(camera);
+                var roots = scene.GetRootGameObjects();
+                TrayLayout.ApplyToStack(
+                    roots.First(root => root.name == "Tray").transform,
+                    roots.First(root => root.name == "Hero Screw").transform);
                 EditorSceneManager.SaveScene(scene);
             }
         }

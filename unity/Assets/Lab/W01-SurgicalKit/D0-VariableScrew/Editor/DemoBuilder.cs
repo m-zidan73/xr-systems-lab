@@ -252,6 +252,7 @@ namespace Lab.W01.VariableScrew.EditorTools
                 Quaternion.Euler(0f, 90f, 0f));
             hero.GetComponent<Screw>().Set(specs[specs.Length / 2],
                                            specs[specs.Length / 2].availableLengthsMm[0]);
+            TrayLayout.ApplyToStack(row, hero.transform);
 
             var camGo = new GameObject("Main Camera");
             camGo.tag = "MainCamera";

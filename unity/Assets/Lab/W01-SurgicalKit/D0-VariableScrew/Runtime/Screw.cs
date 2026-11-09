@@ -60,9 +60,11 @@ namespace Lab.W01.VariableScrew
 
             lengthMm = spec.NearestAvailable(lengthMm);
 
-            // Carry world scale on the transform, so every shader value below stays in
-            // the authored metre space and the maths never has to know.
-            transform.localScale = Vector3.one * ScrewUnits.WorldScale;
+            // Carry world scale and diameter on the transform, so every shader value below
+            // stays in the authored metre space and the maths never has to know. X and Y only:
+            // Z carries length and pitch, which must not scale with diameter.
+            float widthScale = ScrewUnits.WidthScale(spec.diameterMm);
+            transform.localScale = new Vector3(widthScale, widthScale, 1f) * ScrewUnits.WorldScale;
 
             if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
             if (block == null) block = new MaterialPropertyBlock();
@@ -87,7 +89,8 @@ namespace Lab.W01.VariableScrew
                 shaftCollider.direction = 2;                                   // Z axis
                 shaftCollider.height    = lengthMm * MmToUnits;
                 shaftCollider.center    = new Vector3(0f, 0f, lengthMm * MmToUnits * 0.5f);
-                shaftCollider.radius    = spec.diameterMm * MmToUnits * 0.5f;
+                // Mesh space: the transform already carries the width.
+                shaftCollider.radius    = ScrewUnits.MeshShaftRadius;
             }
 
             if (tipPoint != null)

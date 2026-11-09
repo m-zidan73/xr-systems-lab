@@ -25,8 +25,8 @@ namespace Lab.W01.ColourCodedHoles.EditorTools
         const float RingWidth = 0.0015f;
         // ScrewSpec.headEndMm: the head rests on the plate and the shaft goes down into the bone.
         const float HeadHeight = 0.0025f;
-        const float TraySpacing = 0.007f;
         const float TrayZ = -0.075f;
+        const float TrayFloorClearance = 0.0002f;
         const float TrayLengthMm = 20f;
         static readonly Vector3 CameraTarget = new Vector3(0f, 0.03f, -0.035f);
         const float CameraDistance = 0.2f;
@@ -39,8 +39,12 @@ namespace Lab.W01.ColourCodedHoles.EditorTools
         [MenuItem("Lab/W01/Build Colour-Coded Holes Demo")]
         public static void Build()
         {
-            if (!OverwriteGuard.Allow(HolePaths.ScenePath)) return;
+            if (OverwriteGuard.Allow(HolePaths.ScenePath)) Rebuild();
+        }
 
+        /// <summary>Builds without asking, for scripted runs where no one can answer a dialog.</summary>
+        public static void Rebuild()
+        {
             // Open the template first: opening a scene unloads assets loaded before it, and a
             // SerializedProperty then stores those dead references as empty.
             var scene = EditorSceneManager.OpenScene(DemoTemplateBuilder.ScenePath, OpenSceneMode.Single);
@@ -73,13 +77,22 @@ namespace Lab.W01.ColourCodedHoles.EditorTools
 
             var tray = new GameObject("Tray").transform;
             var trayScrews = new Screw[catalogA.screws.Length];
+            // A slot has to fit the widest screw either catalog puts in it.
+            var slotDiameters = new float[trayScrews.Length];
+            for (var i = 0; i < slotDiameters.Length; i++)
+            {
+                var fromB = i < catalogB.screws.Length ? catalogB.screws[i].diameterMm : 0f;
+                slotDiameters[i] = Mathf.Max(catalogA.screws[i].diameterMm, fromB);
+            }
+            var slotCentres = TrayLayout.Centres(slotDiameters);
             for (var i = 0; i < trayScrews.Length; i++)
             {
                 var instance = (GameObject)PrefabUtility.InstantiatePrefab(screwPrefab, scene);
                 instance.name = $"Tray Screw {i + 1}";
                 instance.transform.SetParent(tray, true);
-                var x = (i - (trayScrews.Length - 1) * 0.5f) * TraySpacing;
-                instance.transform.SetPositionAndRotation(new Vector3(x, 0.004f, TrayZ), Quaternion.identity);
+                // The head is the widest part, so it decides how high the screw rests above the floor.
+                var restHeight = ScrewUnits.MmWorld(ScrewUnits.HeadDiameterMm(slotDiameters[i])) * 0.5f + TrayFloorClearance;
+                instance.transform.SetPositionAndRotation(new Vector3(slotCentres[i], restHeight, TrayZ), Quaternion.identity);
                 trayScrews[i] = instance.GetComponent<Screw>();
                 trayScrews[i].Set(catalogA.screws[i], TrayLengthMm);
                 instance.AddComponent<Grabbable>();
