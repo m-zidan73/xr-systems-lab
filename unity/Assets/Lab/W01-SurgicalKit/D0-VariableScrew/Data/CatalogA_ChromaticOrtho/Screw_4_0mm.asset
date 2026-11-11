@@ -33,6 +33,7 @@ MonoBehaviour:
   - 36
   - 38
   - 40
+  - 42
   threadHoleDrillMm: 2.9
   glideHoleDrillMm: 4
   threadPitchMm: 1.25
