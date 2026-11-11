@@ -36,3 +36,6 @@ Desktop.ini
 .claude/settings.local.json
 # Working notes from Claude's process skills
 .superpowers/
+# Backup scenes Unity saves after the Editor closes unexpectedly
+unity/[Aa]ssets/_Recovery/
+unity/[Aa]ssets/_Recovery.meta
