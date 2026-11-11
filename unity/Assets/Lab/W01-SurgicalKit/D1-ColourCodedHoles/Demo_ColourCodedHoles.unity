@@ -516,6 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1 &217749429
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,6 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517918442}
   - component: {fileID: 517918441}
+  - component: {fileID: 517918443}
   m_Layer: 0
   m_Name: Key Light
   m_TagString: Untagged
@@ -891,6 +893,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517918443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517918440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &569690302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1001 &667010333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1256,6 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1 &756635945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 842223400}
   - component: {fileID: 842223399}
+  - component: {fileID: 842223401}
   m_Layer: 0
   m_Name: Rim Light
   m_TagString: Untagged
@@ -1417,6 +1451,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842223401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842223398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &933864627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,6 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1 &1110506952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,6 +1833,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178713772}
   - component: {fileID: 1178713771}
+  - component: {fileID: 1178713773}
   m_Layer: 0
   m_Name: Fill Light
   m_TagString: Untagged
@@ -1856,6 +1921,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178713773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178713770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalLightData
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_CustomShadowLayers: 0
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
+  m_RenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_ShadowRenderingLayersMask:
+    serializedVersion: 0
+    m_Bits: 1
+  m_Version: 4
+  m_LightLayerMask: 1
+  m_ShadowLayerMask: 1
+  m_RenderingLayers: 1
+  m_ShadowRenderingLayers: 1
 --- !u!1 &1184762752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,6 +2162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1001 &1342483728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2190,6 +2285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1 &1468219721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,6 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1001 &1935942683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2886,6 +2983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1001 &2010728293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3008,6 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Lab.Core::Lab.Core.Grabbable
   animateReturn: 1
+  holdUpright: 1
 --- !u!1 &2030199358
 GameObject:
   m_ObjectHideFlags: 0

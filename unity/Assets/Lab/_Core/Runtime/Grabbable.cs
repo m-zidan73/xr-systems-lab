@@ -14,6 +14,8 @@ namespace Lab.Core
         const float ArrivedMetres = 0.0002f;
 
         [SerializeField] bool animateReturn = true;
+        [Tooltip("Turn the part tip-down while it is held, the way a screw is held over a hole.")]
+        [SerializeField] bool holdUpright;
 
         Vector3 _homePosition;
         Quaternion _homeRotation;
@@ -41,6 +43,7 @@ namespace Lab.Core
             if (!_hasHome) SetHome();
             _returning = false;
             IsHeld = true;
+            if (holdUpright) transform.rotation = Quaternion.LookRotation(Vector3.down, Vector3.forward);
             PickedUp?.Invoke(this);
         }
 
