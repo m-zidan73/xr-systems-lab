@@ -10,9 +10,15 @@
   "tags": ["Unity", "C#", "Interaction design", "ScriptableObjects", "Editor tools"],
   "shows": ["Rule-based checks for training content", "Reusable mouse interaction", "Data-driven content"],
   "testedOn": ["PC"],
-  "howItWorks": "",
-  "decisions": [],
-  "next": "",
+  "howItWorks": "One screw is selected with the mouse and dragged and dropped onto the same color as the screw hole, and this checks as a success. The diameter of the screw has to match the diameter of the hole. Only then will the hole accept the screw. Otherwise, it would return back to its origin. We can also zoom in and out, pan, and orbit around the screws.",
+  "decisions": [
+    {
+      "choice": "The screw is dropped into the hole when the cursor is nearest to a hole. It does not matter where the tip of the screw is.",
+      "alternative": "",
+      "why": "This is only applicable for the PC version because, in the flat screen, it's hard to assume the correct 3D position in space."
+    }
+  ],
+  "next": "Instead of the tray, we will use actual bone and plates to screw in, and that's where the real test starts. Users have to accurately determine which screw size to use in the hole.",
   "media": {
     "gif": "media/W01-D1-colour-coded-holes.gif",
     "video": ""
