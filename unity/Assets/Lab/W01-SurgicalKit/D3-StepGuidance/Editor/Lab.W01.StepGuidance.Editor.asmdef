@@ -1,0 +1,25 @@
+{
+    "name": "Lab.W01.StepGuidance.Editor",
+    "rootNamespace": "Lab.W01.StepGuidance.EditorTools",
+    "references": [
+        "Lab.W01.StepGuidance",
+        "Lab.W01.ColourCodedHoles",
+        "Lab.W01.ColourCodedHoles.Editor",
+        "Lab.W01.VariableScrew",
+        "Lab.W01.VariableScrew.Editor",
+        "Lab.Core",
+        "Lab.Core.Editor",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

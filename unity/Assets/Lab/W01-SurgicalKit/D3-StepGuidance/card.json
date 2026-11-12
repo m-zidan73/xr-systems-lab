@@ -1,0 +1,31 @@
+{
+  "id": "W01-D3-step-guidance",
+  "week": 1,
+  "weekTitle": "Surgical-training kit",
+  "day": 3,
+  "date": "2026-11-12",
+  "status": "wip",
+  "title": "Step Guidance",
+  "pitch": "A procedure written as data walks the trainee through each step, rings the hole and screw to use, and names every mistake.",
+  "tags": ["Unity", "C#", "Training design", "Data-driven content", "IMGUI", "Editor tools"],
+  "shows": ["Training procedures written as data", "Mistake tracking with clear feedback", "Building on earlier systems without changing them"],
+  "testedOn": ["PC"],
+  "howItWorks": "",
+  "decisions": [],
+  "next": "",
+  "media": {
+    "gif": "media/W01-D3-step-guidance.gif",
+    "video": ""
+  },
+  "webDemo": "",
+  "builtWith": "Built with Claude Code + MCP for Unity. Design decisions and explanation: Mohitur Rahman Zidan.",
+  "assets": [
+    {
+      "name": "Screw meshes",
+      "source": "From the Variable Screw system, modelled in Blender with Claude Code + Blender MCP",
+      "licence": "Made for this project",
+      "changes": ""
+    }
+  ],
+  "disclaimer": "The procedure, sizes and colours are illustrative example data, not clinical guidance."
+}
