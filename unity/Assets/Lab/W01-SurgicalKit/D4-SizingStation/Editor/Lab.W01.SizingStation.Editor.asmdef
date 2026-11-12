@@ -1,0 +1,24 @@
+{
+    "name": "Lab.W01.SizingStation.Editor",
+    "rootNamespace": "Lab.W01.SizingStation.EditorTools",
+    "references": [
+        "Lab.W01.SizingStation",
+        "Lab.W01.VariableScrew",
+        "Lab.W01.VariableScrew.Editor",
+        "Lab.Core",
+        "Lab.Core.Editor",
+        "Unity.InputSystem",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

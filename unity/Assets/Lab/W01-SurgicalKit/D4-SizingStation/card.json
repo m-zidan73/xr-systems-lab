@@ -1,0 +1,31 @@
+{
+  "id": "W01-D4-sizing-station",
+  "week": 1,
+  "weekTitle": "Surgical-training kit",
+  "day": 4,
+  "date": "2026-11-12",
+  "status": "wip",
+  "title": "Sizing Station",
+  "pitch": "One screw mesh becomes every size a catalog ships, with a readout that measures what the screws on screen really cost.",
+  "tags": ["Unity", "C#", "HLSL shaders", "uGUI", "Profiling", "Editor tools"],
+  "shows": ["One mesh and one material for every implant size", "Memory measured at runtime, with the cost stated", "Controls built from catalog data"],
+  "testedOn": ["PC"],
+  "howItWorks": "",
+  "decisions": [],
+  "next": "",
+  "media": {
+    "gif": "media/W01-D4-sizing-station.gif",
+    "video": ""
+  },
+  "webDemo": "",
+  "builtWith": "Built with Claude Code + MCP for Unity. Design decisions and explanation: Mohitur Rahman Zidan.",
+  "assets": [
+    {
+      "name": "Screw meshes",
+      "source": "From the Variable Screw system, modelled in Blender with Claude Code + Blender MCP",
+      "licence": "Made for this project",
+      "changes": ""
+    }
+  ],
+  "disclaimer": "Sizes, colours and catalogs are illustrative example data, not clinical guidance. Memory figures are measured in the Unity Editor and are larger than a build's."
+}
