@@ -28,11 +28,20 @@ namespace Lab.W01.VariableScrew
         [SerializeField] CapsuleCollider shaftCollider;
         [SerializeField] Transform tipPoint;
 
+        // How quickly the drawn length catches up with the chosen one, per second.
+        const float GlideSharpness = 14f;
+        const float GlideArrivedMm = 0.02f;
+
         MeshRenderer meshRenderer;
         MaterialPropertyBlock block;
+        float shownLengthMm;
+        bool gliding;
 
         public ScrewSpec Spec => spec;
         public float LengthMm => lengthMm;
+        /// <summary>The length the shader draws right now. It equals LengthMm except during a glide.</summary>
+        public float ShownLengthMm => gliding ? shownLengthMm : lengthMm;
+        public bool IsGliding => gliding;
         public Vector3 TipPosition => tipPoint != null ? tipPoint.position : transform.position;
 
         /// <summary>"Ø 3.5 mm × 26 mm", for the scene label and the recording.</summary>
@@ -40,8 +49,13 @@ namespace Lab.W01.VariableScrew
             ? "no spec"
             : $"Ø {spec.diameterMm:0.#} mm × {lengthMm:0.#} mm";
 
-        void OnEnable()   => Apply();
-        void OnValidate() => Apply();
+        void OnEnable()   { gliding = false; Apply(); }
+        void OnValidate() { gliding = false; Apply(); }
+
+        void Update()
+        {
+            if (Application.isPlaying) Tick(Time.deltaTime);
+        }
 
         /// <summary>
         /// Called by the tray at runtime, or by the custom inspector in the editor.
@@ -51,6 +65,32 @@ namespace Lab.W01.VariableScrew
         {
             spec = newSpec;
             lengthMm = spec != null ? spec.NearestAvailable(requestedLengthMm) : requestedLengthMm;
+            gliding = false;
+            Apply();
+        }
+
+        /// <summary>
+        /// The same as Set, but the drawn shaft slides to the new length over a few frames. The
+        /// chosen length, the collider and the tip are right at once, so nothing that measures
+        /// the screw ever sees a size the catalog doesn't ship.
+        /// </summary>
+        public void SetSmooth(ScrewSpec newSpec, float requestedLengthMm)
+        {
+            float from = ShownLengthMm;
+            bool hadSpec = spec != null;
+            spec = newSpec;
+            lengthMm = spec != null ? spec.NearestAvailable(requestedLengthMm) : requestedLengthMm;
+            shownLengthMm = from;
+            gliding = hadSpec && spec != null && Mathf.Abs(from - lengthMm) > GlideArrivedMm;
+            Apply();
+        }
+
+        /// <summary>Moves a glide on by one step of time. Update calls it in Play mode.</summary>
+        public void Tick(float deltaTime)
+        {
+            if (!gliding) return;
+            shownLengthMm = Mathf.Lerp(shownLengthMm, lengthMm, 1f - Mathf.Exp(-GlideSharpness * deltaTime));
+            if (Mathf.Abs(shownLengthMm - lengthMm) <= GlideArrivedMm) gliding = false;
             Apply();
         }
 
@@ -69,7 +109,8 @@ namespace Lab.W01.VariableScrew
             if (meshRenderer == null) meshRenderer = GetComponent<MeshRenderer>();
             if (block == null) block = new MaterialPropertyBlock();
 
-            float stretchMm = lengthMm - spec.baseMeshLengthMm;
+            // Only the picture glides. Everything below the property block uses the chosen length.
+            float stretchMm = ShownLengthMm - spec.baseMeshLengthMm;
 
             meshRenderer.GetPropertyBlock(block);
             block.SetFloat(StretchId,   stretchMm * MmToUnits);
