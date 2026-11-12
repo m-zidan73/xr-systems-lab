@@ -2,7 +2,9 @@
     "name": "Lab.Core.Editor",
     "rootNamespace": "Lab.Core.EditorTools",
     "references": [
-        "Lab.Core"
+        "Lab.Core",
+        "UnityEngine.UI",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [
         "Editor"

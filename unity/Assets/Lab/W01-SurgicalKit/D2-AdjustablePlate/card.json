@@ -1,0 +1,37 @@
+{
+  "id": "W01-D2-adjustable-plate",
+  "week": 1,
+  "weekTitle": "Surgical-training kit",
+  "day": 2,
+  "date": "2026-11-12",
+  "status": "wip",
+  "title": "Adjustable Plate",
+  "pitch": "A fibula plate moves and turns on three axes, each within its own limit, and says when it sits in place on the bone.",
+  "tags": ["Unity", "C#", "3D maths", "uGUI", "Editor tools", "Blender"],
+  "shows": ["Constrained 3D placement", "Reusable slider panel for any adjustable part", "Fitting a part to a bone surface"],
+  "testedOn": ["PC"],
+  "howItWorks": "",
+  "decisions": [],
+  "next": "",
+  "media": {
+    "gif": "media/W01-D2-adjustable-plate.gif",
+    "video": ""
+  },
+  "webDemo": "",
+  "builtWith": "Built with Claude Code + MCP for Unity + Blender. Design decisions and explanation: Mohitur Rahman Zidan.",
+  "assets": [
+    {
+      "name": "Distal Fibula Plate",
+      "source": "Modelled in Blender by Mohitur Rahman Zidan",
+      "licence": "Made for this project",
+      "changes": ""
+    },
+    {
+      "name": "Foot of Charcot (rocker-bottom deformity)",
+      "source": "valchanov on Sketchfab: https://sketchfab.com/3d-models/foot-of-charcot-rocker-bottom-deformity-c56b7dbe634b46b0b79e5afd0a526d5e",
+      "licence": "CC BY 4.0",
+      "changes": "Reduced from 558,016 to about 57,000 triangles, fibula split into its own part, scaled to metres. Done in Blender with Claude Code."
+    }
+  ],
+  "disclaimer": "Stand-in anatomy: the foot is a Charcot (rocker-bottom) deformity model, not a fracture case. Plate position, limits and tolerances are illustrative, not clinical guidance."
+}

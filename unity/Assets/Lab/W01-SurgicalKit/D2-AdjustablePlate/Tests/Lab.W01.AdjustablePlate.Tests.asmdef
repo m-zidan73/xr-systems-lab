@@ -1,0 +1,29 @@
+{
+    "name": "Lab.W01.AdjustablePlate.Tests",
+    "rootNamespace": "Lab.W01.AdjustablePlate.Tests",
+    "references": [
+        "Lab.W01.AdjustablePlate",
+        "Lab.W01.AdjustablePlate.Editor",
+        "Lab.Core",
+        "Lab.Core.Editor",
+        "Unity.InputSystem",
+        "UnityEngine.UI",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

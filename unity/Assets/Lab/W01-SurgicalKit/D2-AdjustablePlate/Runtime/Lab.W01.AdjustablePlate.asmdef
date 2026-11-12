@@ -1,0 +1,16 @@
+{
+    "name": "Lab.W01.AdjustablePlate",
+    "rootNamespace": "Lab.W01.AdjustablePlate",
+    "references": [
+        "Lab.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
