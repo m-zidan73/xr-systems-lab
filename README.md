@@ -10,6 +10,7 @@ Small systems that plug into larger XR and game projects.
 | | System | What it does | Tested on |
 |---|---|---|---|
 | <img src="media/W01-D0-variable-screw.gif" alt="Variable Screw" width="200"> | [Variable Screw](unity/Assets/Lab/W01-SurgicalKit/D0-VariableScrew) | One screw mesh that changes length through data and snaps only to sizes the catalog ships. | PC |
+| <img src="media/W01-D1-colour-coded-holes.gif" alt="Colour-Coded Holes" width="200"> | [Colour-Coded Holes](unity/Assets/Lab/W01-SurgicalKit/D1-ColourCodedHoles) | Plate holes take their colour from the implant catalog and only accept a screw of the matching size. | PC |
 
 ## Open it in Unity
 

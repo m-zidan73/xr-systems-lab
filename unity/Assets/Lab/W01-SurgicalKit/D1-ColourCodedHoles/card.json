@@ -4,7 +4,7 @@
   "weekTitle": "Surgical-training kit",
   "day": 1,
   "date": "2026-11-06",
-  "status": "wip",
+  "status": "done",
   "title": "Colour-Coded Holes",
   "pitch": "Plate holes take their colour from the implant catalog and only accept a screw of the matching size.",
   "tags": ["Unity", "C#", "Interaction design", "ScriptableObjects", "Editor tools"],
@@ -14,7 +14,7 @@
   "decisions": [
     {
       "choice": "The screw is dropped into the hole when the cursor is nearest to a hole. It does not matter where the tip of the screw is.",
-      "alternative": "",
+      "alternative": "One alternative is to use physics collision. The idea is that when the screw collider hits the collider of the hole in the tray, it checks ok, then it attaches itself to the hole.",
       "why": "This is only applicable for the PC version because, in the flat screen, it's hard to assume the correct 3D position in space."
     }
   ],
