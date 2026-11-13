@@ -64,7 +64,8 @@ namespace Lab.W01.AdjustablePlate.EditorTools
 
             var fit = FibulaFrame.Place(WorldVertices(fibula).ToList(), otherBones, PlateVertices(plateAsset), DistalMargin, RestGap);
             var frame = new GameObject("Plate Frame").transform;
-            frame.SetPositionAndRotation(fit.position, fit.rotation);
+            var (seatPosition, seatRotation) = PlateSeat.From(fit);
+            frame.SetPositionAndRotation(seatPosition, seatRotation);
 
             var plate = (GameObject)PrefabUtility.InstantiatePrefab(plateAsset, scene);
             plate.name = "Distal Fibula Plate";
@@ -106,19 +107,19 @@ namespace Lab.W01.AdjustablePlate.EditorTools
 
             AxisPanelBuilder.Build(adjuster, PanelTitle, PanelHelp);
 
-            PlaceCamera(fit, Front(meshes, fit.axis));
+            PlaceCamera(fit, seatPosition, Front(meshes, fit.axis));
 
             EditorSceneManager.SaveScene(scene, PlatePaths.ScenePath);
             AssetDatabase.SaveAssets();
         }
 
         // From the lateral side, a little in front and above, so the plate and the outline both show.
-        static void PlaceCamera(FibulaFrame.Fit fit, Vector3 front)
+        static void PlaceCamera(FibulaFrame.Fit fit, Vector3 seat, Vector3 front)
         {
             var camera = Object.FindAnyObjectByType<Camera>();
             var direction = (fit.lateral * 0.85f + front * 0.35f + Vector3.up * 0.3f).normalized;
-            camera.transform.position = fit.position + direction * CameraDistance;
-            camera.transform.LookAt(fit.position, Vector3.up);
+            camera.transform.position = seat + direction * CameraDistance;
+            camera.transform.LookAt(seat, Vector3.up);
             camera.GetComponent<OrbitCamera>().StartDistance = CameraDistance;
         }
 

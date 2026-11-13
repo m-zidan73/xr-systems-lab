@@ -33,5 +33,5 @@
       "changes": "Reduced from 558,016 to about 57,000 triangles, fibula split into its own part, scaled to metres. Done in Blender with Claude Code."
     }
   ],
-  "disclaimer": "The anatomy is a stand-in with a Charcot deformity, and the plate does not sit flush on it. Drill sizes, depths and the procedure are illustrative example data, not clinical guidance."
+  "disclaimer": "The anatomy is a stand-in with a Charcot deformity, and the plate was seated on it by eye. Drill sizes, depths and the procedure are illustrative example data, not clinical guidance."
 }
