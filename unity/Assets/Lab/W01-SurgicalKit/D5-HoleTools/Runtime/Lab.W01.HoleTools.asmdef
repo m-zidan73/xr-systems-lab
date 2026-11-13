@@ -1,0 +1,18 @@
+{
+    "name": "Lab.W01.HoleTools",
+    "rootNamespace": "Lab.W01.HoleTools",
+    "references": [
+        "Lab.Core",
+        "Lab.W01.VariableScrew",
+        "Lab.W01.ColourCodedHoles"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,37 @@
+{
+  "id": "W01-D5-hole-tools",
+  "week": 1,
+  "weekTitle": "Surgical-training kit",
+  "day": 5,
+  "date": "2026-11-13",
+  "status": "wip",
+  "title": "Hole Tools",
+  "pitch": "A drill and a depth gauge that work on the plate's holes: the bit comes from the catalog, and the depth is measured through the bone under each hole.",
+  "tags": ["Unity", "C#", "Physics raycasts", "Data-driven content", "IMGUI", "Editor tools"],
+  "shows": ["Measuring real geometry instead of typing numbers in", "Tools that reuse the same drop rule as the screws", "Building on earlier systems with one small change"],
+  "testedOn": ["PC"],
+  "howItWorks": "",
+  "decisions": [],
+  "next": "",
+  "media": {
+    "gif": "media/W01-D5-hole-tools.gif",
+    "video": ""
+  },
+  "webDemo": "",
+  "builtWith": "Built with Claude Code + MCP for Unity. Design decisions and explanation: Mohitur Rahman Zidan.",
+  "assets": [
+    {
+      "name": "Distal Fibula Plate",
+      "source": "Modelled in Blender by Mohitur Rahman Zidan",
+      "licence": "Made for this project",
+      "changes": ""
+    },
+    {
+      "name": "Foot of Charcot (rocker-bottom deformity)",
+      "source": "valchanov on Sketchfab: https://sketchfab.com/3d-models/foot-of-charcot-rocker-bottom-deformity-c56b7dbe634b46b0b79e5afd0a526d5e",
+      "licence": "CC BY 4.0",
+      "changes": "Reduced from 558,016 to about 57,000 triangles, fibula split into its own part, scaled to metres. Done in Blender with Claude Code."
+    }
+  ],
+  "disclaimer": "The anatomy is a stand-in with a Charcot deformity, and the plate does not sit flush on it. Drill sizes, depths and the procedure are illustrative example data, not clinical guidance."
+}

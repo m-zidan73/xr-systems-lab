@@ -1,0 +1,33 @@
+{
+    "name": "Lab.W01.HoleTools.Tests",
+    "rootNamespace": "Lab.W01.HoleTools.Tests",
+    "references": [
+        "Lab.W01.HoleTools",
+        "Lab.W01.HoleTools.Editor",
+        "Lab.W01.AdjustablePlate",
+        "Lab.W01.ColourCodedHoles",
+        "Lab.W01.ColourCodedHoles.Tests",
+        "Lab.W01.VariableScrew",
+        "Lab.W01.VariableScrew.Editor",
+        "Lab.Core",
+        "Lab.Core.Editor",
+        "Unity.InputSystem",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,27 @@
+{
+    "name": "Lab.W01.HoleTools.Editor",
+    "rootNamespace": "Lab.W01.HoleTools.EditorTools",
+    "references": [
+        "Lab.W01.HoleTools",
+        "Lab.W01.AdjustablePlate",
+        "Lab.W01.AdjustablePlate.Editor",
+        "Lab.W01.StepGuidance.Editor",
+        "Lab.W01.ColourCodedHoles",
+        "Lab.W01.VariableScrew",
+        "Lab.W01.VariableScrew.Editor",
+        "Lab.Core",
+        "Lab.Core.Editor",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

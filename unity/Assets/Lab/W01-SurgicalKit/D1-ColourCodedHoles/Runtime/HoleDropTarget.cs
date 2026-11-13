@@ -17,7 +17,7 @@ namespace Lab.W01.ColourCodedHoles
         void OnEnable() => DropTargets.Register(this);
         void OnDisable() => DropTargets.Unregister(this);
 
-        public bool TryDrop(Grabbable item)
+        public virtual bool TryDrop(Grabbable item)
         {
             var screw = item != null ? item.GetComponent<Screw>() : null;
             if (Hole.TryAccept(screw) != AcceptResult.Accepted) return false;
